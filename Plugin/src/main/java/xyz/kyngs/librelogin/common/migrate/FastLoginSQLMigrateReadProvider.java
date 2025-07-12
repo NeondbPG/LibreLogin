@@ -114,7 +114,7 @@ public class FastLoginSQLMigrateReadProvider extends SQLMigrateReadProvider {
                 if (main instanceof SQLDatabaseConnector sqlMain) {
                     String finalName = name;
                     sqlMain.runQuery(connection2 -> {
-                        var ps2 = connection2.prepareStatement("UPDATE librepremium_data SET premium_uuid=? WHERE last_nickname=?");
+                        var ps2 = connection2.prepareStatement("UPDATE authentication SET premium_uuid=? WHERE last_nickname=?");
                         ps2.setString(1, premiumUUID.toString());
                         ps2.setString(2, finalName);
                         ps2.executeUpdate();

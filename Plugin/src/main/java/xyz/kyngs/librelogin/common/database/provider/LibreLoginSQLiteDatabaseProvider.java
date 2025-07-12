@@ -23,7 +23,7 @@ public class LibreLoginSQLiteDatabaseProvider extends LibreLoginSQLDatabaseProvi
     protected List<String> getColumnNames(Connection connection) throws SQLException {
         var columns = new ArrayList<String>();
 
-        var rs = connection.prepareStatement("PRAGMA table_info(librepremium_data)").executeQuery();
+        var rs = connection.prepareStatement("PRAGMA table_info(authentication)").executeQuery();
 
         while (rs.next()) {
             columns.add(rs.getString("name"));
@@ -39,6 +39,6 @@ public class LibreLoginSQLiteDatabaseProvider extends LibreLoginSQLDatabaseProvi
 
     @Override
     protected String addUnique(String column) {
-        return "CREATE UNIQUE INDEX %s_index ON librepremium_data(%s);".formatted(column, column);
+        return "CREATE UNIQUE INDEX %s_index ON authentication(%s);".formatted(column, column);
     }
 }
