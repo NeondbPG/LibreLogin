@@ -54,7 +54,7 @@ alt="Contributors listed"></img>
 
 # License
 
-LibrePremium is [FOSS](https://en.wikipedia.org/wiki/Free_and_open-source_software), licensed under the Mozilla Public License 2.0.
+LibreLogin is [FOSS](https://en.wikipedia.org/wiki/Free_and_open-source_software), licensed under the Mozilla Public License 2.0.
 
 [Read the license here.](https://github.com/kyngs/LibreLogin/blob/master/LICENSE)
 
