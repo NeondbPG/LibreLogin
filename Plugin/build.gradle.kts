@@ -21,7 +21,7 @@ mcupload {
             loaders = listOf("paper", "purpur", "bungeecord", "waterfall", "velocity")
             projectId = "tL0SCXYq"
             gameVersions = listOf(
-                "1.21.4", "1.21.3", "1.21.2", "1.21.1", "1.21",
+                "1.21.7", "1.21.6", "1.21.5", "1.21.4", "1.21.3", "1.21.2", "1.21.1", "1.21",
                 "1.20.6", "1.20.5", "1.20.4", "1.20.3", "1.20.2", "1.20.1", "1.20",
                 "1.19.4", "1.19.3", "1.19.2", "1.19.1", "1.19",
                 "1.18.2", "1.18.1", "1.18",
@@ -68,6 +68,7 @@ repositories {
     maven { url = uri("https://jitpack.io/") }
     maven { url = uri("https://s01.oss.sonatype.org/content/repositories/snapshots/") }
     maven { url = uri("https://repo.codemc.io/repository/maven-releases/") }
+    maven { url = uri("https://repo.loohpjames.com/repository/") }
 }
 
 blossom {
@@ -123,13 +124,13 @@ libby {
 configurations.all {
     // I hate this, but it needs to be done as bungeecord does not support newer versions of adventure, and packetevents includes it
     resolutionStrategy {
-        force("net.kyori:adventure-text-minimessage:4.14.0")
-        force("net.kyori:adventure-text-serializer-gson:4.14.0")
-        force("net.kyori:adventure-text-serializer-legacy:4.14.0")
-        force("net.kyori:adventure-text-serializer-json:4.14.0")
-        force("net.kyori:adventure-api:4.14.0")
-        force("net.kyori:adventure-nbt:4.14.0")
-        force("net.kyori:adventure-key:4.14.0")
+        force("net.kyori:adventure-text-minimessage:4.23.0")
+        force("net.kyori:adventure-text-serializer-gson:4.23.0")
+        force("net.kyori:adventure-text-serializer-legacy:4.23.0")
+        force("net.kyori:adventure-text-serializer-json:4.23.0")
+        force("net.kyori:adventure-api:4.23.0")
+        force("net.kyori:adventure-nbt:4.23.0")
+        force("net.kyori:adventure-key:4.23.0")
     }
 }
 
@@ -143,14 +144,14 @@ dependencies {
     compileOnly("com.velocitypowered:velocity-proxy:3.2.0-SNAPSHOT-277")
 
     //MySQL
-    libby("org.mariadb.jdbc:mariadb-java-client:3.5.1")
-    libby("com.zaxxer:HikariCP:6.2.1")
+    libby("org.mariadb.jdbc:mariadb-java-client:3.5.4")
+    libby("com.zaxxer:HikariCP:6.3.0")
 
     //SQLite
-    libby("org.xerial:sqlite-jdbc:3.47.1.0")
+    libby("org.xerial:sqlite-jdbc:3.50.2.0")
 
     //PostgreSQL
-    libby("org.postgresql:postgresql:42.7.5")
+    libby("org.postgresql:postgresql:42.7.7")
 
     //ACF
     libby("com.github.kyngs.commands:acf-velocity:7d5bf7cac0")
@@ -158,39 +159,38 @@ dependencies {
     libby("com.github.kyngs.commands:acf-paper:7d5bf7cac0")
 
     //Utils
-    libby("com.github.ben-manes.caffeine:caffeine:3.2.0")
-    libby("org.spongepowered:configurate-hocon:4.1.2")
+    libby("com.github.ben-manes.caffeine:caffeine:3.2.1")
+    libby("org.spongepowered:configurate-hocon:4.2.0")
     libby("at.favre.lib:bcrypt:0.10.2")
     libby("dev.samstevens.totp:totp:1.7.1")
-    compileOnly("dev.simplix:protocolize-api:2.4.2")
-    libby("org.bouncycastle:bcprov-jdk18on:1.80")
+    compileOnly("dev.simplix:protocolize-api:2.4.3")
+    libby("org.bouncycastle:bcprov-jdk18on:1.81")
     libby("org.apache.commons:commons-email:1.6.0")
-    // DO NOT UPGRADE TO 4.15.0 OR ABOVE BEFORE TESTING WATERFALL AND BUNGEECORD COMPATIBILITY!!!
-    libby("net.kyori:adventure-text-minimessage:4.14.0")
+    libby("net.kyori:adventure-text-minimessage:4.23.0")
     libby("com.github.kyngs:LegacyMessage:0.2.0")
 
     //Geyser
-    compileOnly("org.geysermc.floodgate:api:2.2.0-SNAPSHOT")
+    compileOnly("org.geysermc.floodgate:api:2.2.4-SNAPSHOT")
     //LuckPerms
     compileOnly("net.luckperms:api:5.4")
 
     //Bungeecord
-    compileOnly("net.md-5:bungeecord-api:1.21-R0.1-SNAPSHOT")
-    compileOnly("com.github.ProxioDev.ValioBungee:RedisBungee-Bungee:0.12.5")
-    libby("net.kyori:adventure-platform-bungeecord:4.1.2")
+    compileOnly("net.md-5:bungeecord-api:1.21-R0.3-SNAPSHOT")
+    compileOnly("com.github.ProxioDev.ValioBungee:RedisBungee-Bungee:0.12.6")
+    libby("net.kyori:adventure-platform-bungeecord:4.4.0")
 
     //BStats
-    libby("org.bstats:bstats-velocity:3.0.2")
-    libby("org.bstats:bstats-bungeecord:3.0.2")
-    libby("org.bstats:bstats-bukkit:3.0.2")
+    libby("org.bstats:bstats-velocity:3.1.0")
+    libby("org.bstats:bstats-bungeecord:3.1.0")
+    libby("org.bstats:bstats-bukkit:3.1.0")
 
     //Paper
-    compileOnly("io.papermc.paper:paper-api:1.21.4-R0.1-SNAPSHOT")
-    //compileOnly "com.comphenix.protocol:ProtocolLib:5.1.0"
-    libby("com.github.retrooper:packetevents-spigot:2.7.0")
-    compileOnly("io.netty:netty-transport:4.1.108.Final")
-    compileOnly("com.mojang:datafixerupper:5.0.28") //I hate this so much
-    compileOnly("org.apache.logging.log4j:log4j-core:2.23.1")
+    compileOnly("io.papermc.paper:paper-api:1.21.7-R0.1-SNAPSHOT")
+    //compileOnly "com.comphenix.protocol:ProtocolLib:5.3.0"
+    libby("com.github.retrooper:packetevents-spigot:2.9.1")
+    compileOnly("io.netty:netty-transport:4.2.2.Final")
+    compileOnly("com.mojang:datafixerupper:6.0.8") //I hate this so much
+    compileOnly("org.apache.logging.log4j:log4j-core:2.25.0")
 
     //Libby
     implementation("xyz.kyngs.libby:libby-bukkit:1.6.0")
