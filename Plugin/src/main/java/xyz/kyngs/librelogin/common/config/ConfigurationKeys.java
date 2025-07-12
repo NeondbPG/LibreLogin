@@ -53,7 +53,7 @@ public class ConfigurationKeys {
                                         
                     The servers/worlds player should be sent to when they are authenticated. THE SERVERS MUST BE REGISTERED IN THE PROXY CONFIG. IN CASE OF PAPER, THE WORLDS MUST EXIST.
                     The configuration allows configuring forced hosts; the servers/worlds in "root" are used when players do not connect from a forced host. Use § instead of dots.
-                    See: https://github.com/kyngs/LibrePremium/wiki/Configuring-Servers
+                    See: https://github.com/kyngs/LibreLogin/wiki/Configuring-Servers
                     """,
             ConfigurateHelper::getServerMap
     );
