@@ -41,6 +41,16 @@ public class NanoLimboConfig implements LimboConfig {
     }
 
     @Override
+    public double getMaxPacketRate() {
+        return 500.0;
+    }
+
+    @Override
+    public double getInterval() {
+        return 7.0;
+    }
+
+    @Override
     public PingData getPingData() {
         return pingData;
     }
@@ -97,6 +107,11 @@ public class NanoLimboConfig implements LimboConfig {
 
     @Override
     public boolean isUseHeaderAndFooter() {
+        return false;
+    }
+
+    @Override
+    public boolean isSecureProfile() {
         return false;
     }
 
