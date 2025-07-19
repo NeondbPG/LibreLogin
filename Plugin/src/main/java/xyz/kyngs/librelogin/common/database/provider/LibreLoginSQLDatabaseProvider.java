@@ -55,9 +55,9 @@ public abstract class LibreLoginSQLDatabaseProvider extends AuthenticDatabasePro
     public User getByName(String name) {
         plugin.reportMainThread();
         return connector.runQuery(connection -> {
-            var ps = connection.prepareStatement("SELECT * FROM authentication WHERE last_nickname_lower = ?");
+            var ps = connection.prepareStatement("SELECT * FROM authentication WHERE LOWER(last_nickname)=LOWER(?)");
 
-            ps.setString(1, name.toLowerCase());
+            ps.setString(1, name);
 
             var rs = ps.executeQuery();
 
@@ -236,8 +236,7 @@ public abstract class LibreLoginSQLDatabaseProvider extends AuthenticDatabasePro
                             "hashed_password VARCHAR(255)," +
                             "salt VARCHAR(255)," +
                             "algo VARCHAR(255)," +
-                    "last_nickname VARCHAR(255) NOT NULL," +
-                    "last_nickname_lower VARCHAR(255) AS (LOWER(last_nickname)) STORED," +
+                    "last_nickname VARCHAR(255) NOT NULL UNIQUE," +
                             "joined TIMESTAMP NULL DEFAULT NULL," +
                             "last_seen TIMESTAMP NULL DEFAULT NULL," +
                             "last_server VARCHAR(255)" +
@@ -265,7 +264,7 @@ public abstract class LibreLoginSQLDatabaseProvider extends AuthenticDatabasePro
             }
 
             try {
-                connection.prepareStatement("CREATE UNIQUE INDEX idx_nickname_lower ON librepremium_data (last_nickname_lower)").executeUpdate();
+                connection.prepareStatement(addUnique("last_nickname")).executeUpdate();
             } catch (SQLException ignored) {
             }
         });
